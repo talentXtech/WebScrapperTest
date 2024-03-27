@@ -7,11 +7,11 @@ using TalentX.WebScrapper.API.Data;
 
 #nullable disable
 
-namespace TalentX.WebScrapper.API.Data.Migrations
+namespace TalentX.WebScrapper.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240319200922_addedEmployeeNames")]
-    partial class addedEmployeeNames
+    [Migration("20240327145913_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,10 @@ namespace TalentX.WebScrapper.API.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("EmployeeNames")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -53,10 +57,6 @@ namespace TalentX.WebScrapper.API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("YearOfEstablishment")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("employeeNames")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -80,6 +80,23 @@ namespace TalentX.WebScrapper.API.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("InitialScrapOutputData");
+                });
+
+            modelBuilder.Entity("TalentX.WebScrapper.API.Entities.LayOffScrapInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("elementName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LayOffScrapInfo");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,13 +8,18 @@ namespace TalentX.WebScrapper.API.Interface
 {
     public interface IScrapDataRepo
     {
-       Task AddAsync(InitialScrapOutputData outputData);
+        Task AddAsync(InitialScrapOutputData outputData);
 
-       Task AddRangeAsync(List<InitialScrapOutputData> outputDatas);
+        Task AddRangeAsync(List<InitialScrapOutputData> outputDatas);
 
-       Task AddDetailedDataAsync(DetailedScrapOutputData outputData);
-       Task DeleteDetailedDataAsync();
-       Task DeleteAsync();
-       Task<List<DetailedScrapOutputData>> FindAsync();
+        Task AddDetailedDataAsync(DetailedScrapOutputData outputData);
+        Task DeleteDetailedDataAsync();
+        Task DeleteAsync();
+        Task<List<DetailedScrapOutputData>> FindAsync();
+
+        Task AddLayOffDataAsync(LayOffScrapInfo outputData);
+        Task DeleteLayOffDataAsync();
+
+        Task<List<LayOffScrapInfo>> FindLayOffDataAsync();
     }
 }

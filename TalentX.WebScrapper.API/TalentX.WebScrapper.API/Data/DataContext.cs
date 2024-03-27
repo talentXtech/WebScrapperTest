@@ -17,5 +17,7 @@ namespace TalentX.WebScrapper.API.Data
         public DbSet<InitialScrapOutputData> InitialScrapOutputData { get; set; }
         public DbSet<DetailedScrapOutputData> DetailedScrapOutputData { get; set; }
 
+        public DbSet<LayOffScrapInfo> LayOffScrapInfo { get; set; }
+
     }
 }

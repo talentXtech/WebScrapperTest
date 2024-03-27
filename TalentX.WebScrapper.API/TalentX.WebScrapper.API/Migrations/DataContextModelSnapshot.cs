@@ -38,6 +38,10 @@ namespace TalentX.WebScrapper.API.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("EmployeeNames")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -51,10 +55,6 @@ namespace TalentX.WebScrapper.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("YearOfEstablishment")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("employeeNames")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -78,6 +78,23 @@ namespace TalentX.WebScrapper.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("InitialScrapOutputData");
+                });
+
+            modelBuilder.Entity("TalentX.WebScrapper.API.Entities.LayOffScrapInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("elementName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LayOffScrapInfo");
                 });
 #pragma warning restore 612, 618
         }

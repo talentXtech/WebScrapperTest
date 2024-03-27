@@ -38,7 +38,7 @@ namespace TalentX.WebScrapper.API.Controllers
                 // Deal with compliance overlay
                 Thread.Sleep(5000);
                 var complianceOverlayElement = driver.FindElements(By.Id("qc-cmp2-ui"));
-                if (complianceOverlayElement.Count() > 0) { complianceOverlayElement[0].ClickButton("css-iq8lad"); }
+                if (complianceOverlayElement.Count() > 0) { complianceOverlayElement[0].ClickButton("css-iq8lad", "class"); }
 
 
                 // enter industry
@@ -125,7 +125,7 @@ namespace TalentX.WebScrapper.API.Controllers
                     var newComplianceOverlayElement = newDriver.FindElements(By.Id("qc-cmp2-ui"));
                     if (newComplianceOverlayElement.Count() > 0)
                     {
-                        newComplianceOverlayElement[0].ClickButton("css-iq8lad");
+                        newComplianceOverlayElement[0].ClickButton("css-iq8lad", "class");
                     }
 
 

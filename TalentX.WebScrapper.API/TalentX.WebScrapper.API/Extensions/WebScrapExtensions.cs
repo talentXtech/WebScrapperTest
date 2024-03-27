@@ -31,18 +31,22 @@ namespace TalentX.WebScrapper.API.Extensions
             }
         }
 
-        public static void ClickButton(this IWebElement complianceOverlayElement, string className)
+        public static void ClickButton(this IWebElement complianceOverlayElement, string str, string elementType)
         {
-           
-                complianceOverlayElement?.FindElement(By.ClassName(className)).Click();
-            
+            if (elementType == "class")
+            { complianceOverlayElement?.FindElement(By.ClassName(str)).Click(); }
+           else if (elementType == "id")
+            {complianceOverlayElement?.FindElement(By.Id(str)).Click(); }
+            else
+            { Console.Write("Provide valid element type"); }           
+
         }
 
 
 
 
 
-        public static string FindById(this  ChromeDriver driver, string id) 
+        public static string FindById(this ChromeDriver driver, string id)
         {
             var element = driver.FindElements(By.Id(id));
             if (element.Count > 0)
@@ -64,14 +68,22 @@ namespace TalentX.WebScrapper.API.Extensions
             return "Details Not Available";
         }
 
+        public static IWebElement FindElementByClass(this ChromeDriver driver, string className)
+        {
+            var element = driver.FindElement(By.ClassName(className));
+            return element;
+        }
+
         public static string FindByXPath(this ChromeDriver driver, string xpath)
         {
             var element = driver.FindElements(By.XPath(xpath));
-            if (element.Count > 0) {
+            if (element.Count > 0)
+            {
                 var text = element[0].Text;
                 return text;
-            }  return "Details Not Available";
-            
+            }
+            return "Details Not Available";
+
         }
 
         public static string FindByTag(this ChromeDriver driver, string tag)
@@ -96,6 +108,33 @@ namespace TalentX.WebScrapper.API.Extensions
             return "Details Not Available";
         }
 
+        public static string FindBySelectorWithChildDivElement(this IWebElement parentElement, string selector)
+        {
+            var childElement = parentElement.FindElement(By.CssSelector(selector));
+            var element = childElement.FindElements(By.TagName("div"));
+            if (element.Count > 0)
+            {
+                var text = element[0].Text;
+                return text;
+            }
+            return "Details Not Available";
+        }
+        public static string FindBySelector(this IWebElement parentElement, string selector)
+        {
+            var element = parentElement.FindElement(By.CssSelector(selector));
+            var text = element.Text;
+            return text;
+        }
+
+        public static string FindByClass(this IWebElement parentElement, string className)
+        {
+            var element = parentElement.FindElement(By.ClassName(className));
+            var text = element.Text;
+            return text;
+        }
+
+
+
         public static ReadOnlyCollection<IWebElement> FindAllByClass(this ChromeDriver driver, string className)
         {
             var element = driver.FindElements(By.ClassName(className));
@@ -104,9 +143,15 @@ namespace TalentX.WebScrapper.API.Extensions
 
 
 
-        public static ReadOnlyCollection<IWebElement>  FindAllByTag(this IWebElement parentElement, string tag)
+        public static ReadOnlyCollection<IWebElement> FindAllByTag(this IWebElement parentElement, string tag)
         {
             var elements = parentElement.FindElements(By.TagName(tag));
+            return elements;
+        }
+
+        public static ReadOnlyCollection<IWebElement> FindAllByClass(this IWebElement parentElement, string className)
+        {
+            var elements = parentElement.FindElements(By.ClassName(className));
             return elements;
         }
     }
