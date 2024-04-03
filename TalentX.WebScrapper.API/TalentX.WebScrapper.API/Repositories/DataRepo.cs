@@ -36,7 +36,7 @@ namespace TalentX.WebScrapper.API.Repositories
 
             try
             {
-                _context.Database.ExecuteSqlRaw("DELETE FROM InitialScrapOutputData");
+                _context.Database.ExecuteSqlRaw("TRUNCATE TABLE InitialScrapOutputData");
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace TalentX.WebScrapper.API.Repositories
 
             try
             {
-                _context.Database.ExecuteSqlRaw("DELETE FROM DetailedScrapOutputData");
+                _context.Database.ExecuteSqlRaw("TRUNCATE TABLE DetailedScrapOutputData");
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -111,14 +111,27 @@ namespace TalentX.WebScrapper.API.Repositories
 
             try
             {
-              //  if (_context.LayOffScrapInfo.Any(o => o.elementName != outputData.elementName))
-            //    {
+                if (!_context.LayOffScrapInfo.Any(o => o.elementName == outputData.elementName))
+                {
                     await _context.LayOffScrapInfo.AddAsync(outputData);
-              //  }
+                    await _context.SaveChangesAsync();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+        }
+        public async Task AddRangeLayOffDataAsync(List<LayOffScrapInfo> outputDatas)
+        {
+
+            try
+            {
+                await _context.LayOffScrapInfo.AddRangeAsync(outputDatas);
                 await _context.SaveChangesAsync();
-
-
-
             }
             catch (Exception ex)
             {
@@ -132,7 +145,7 @@ namespace TalentX.WebScrapper.API.Repositories
 
             try
             {
-                _context.Database.ExecuteSqlRaw("DELETE FROM LayOffScrapInfo");
+                _context.Database.ExecuteSqlRaw("TRUNCATE TABLE LayOffScrapInfo");
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)

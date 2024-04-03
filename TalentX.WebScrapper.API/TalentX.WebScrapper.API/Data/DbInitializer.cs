@@ -12,53 +12,54 @@ namespace TalentX.WebScrapper.API.Data
         public static void Initialize(DataContext context)
         {
 
-            //if (context.InitialScrapOutputData.Any()) return;
+            if (context.InitialScrapOutputData.Any()) return;
 
-            //var testData1 = new InitialScrapOutputData
-            //{
-            //    Title = "test",
-            //    Url = "testUrl"
+            var testData1 = new InitialScrapOutputData
+            {
+                Title = "test",
+                Url = "testUrl"
 
-            //};
+            };
 
-            //context.InitialScrapOutputData.Add(testData1);
-            //context.SaveChanges();
+            context.InitialScrapOutputData.Add(testData1);
+            context.SaveChanges();
 
-            //if (context.DetailedScrapOutputData.Any()) return;
+            if (context.DetailedScrapOutputData.Any()) return;
 
-            //var testData = new DetailedScrapOutputData
-            //{
-            //    CompanyName = "test",
-            //    AllabolagUrl = "testUrl",
-            //    OrgNo = "test",
-            //    CEO = "test",
-            //    Address = "test",
-            //    Location = "test",
-            //    YearOfEstablishment = "test",
-            //    Revenue = "test",
-            //    EmployeeNames = "test,test"
-            //};
+            var testData = new DetailedScrapOutputData
+            {
+                CompanyName = "test",
+                AllabolagUrl = "testUrl",
+                OrgNo = "test",
+                CEO = "test",
+                Address = "test",
+                Location = "test",
+                YearOfEstablishment = "test",
+                Revenue = "test",
+                EmployeeNames = "test,test"
+            };
 
-            //context.DetailedScrapOutputData.Add(testData);
-            //context.SaveChanges();
+            context.DetailedScrapOutputData.Add(testData);
+            context.SaveChanges();
 
             if (context.LayOffScrapInfo.Any()) return;
 
             var testData2 = new LayOffScrapInfo
             {
                 elementName = "text",
+                numberText = "1",
                 CompanyName = "companyNameElement",
-                //LocationHQ = "location",
-                //LaidOff = "laidOff",
-                //Date = "date",
-                //Percentage = "percentage",
-                //Industry = "industry",
-                //SourceUrl = "source",
-                //listOfLaidOffEmployeesUrl = "employees",
-                //Stage = "stage",
-                //Raised = "raised",
-                //Country = "country",
-                //DateAdded = "dateAdded"
+                LocationHQ = "location",
+                LaidOff = "laidOff",
+                Date = "date",
+                Percentage = "percentage",
+                Industry = "industry",
+                SourceUrl = "source",
+                listOfLaidOffEmployeesUrl = "employees",
+                Stage = "stage",
+                Raised = "raised",
+                Country = "country",
+                DateAdded = "dateAdded"
             };
 
             context.LayOffScrapInfo.Add(testData2);

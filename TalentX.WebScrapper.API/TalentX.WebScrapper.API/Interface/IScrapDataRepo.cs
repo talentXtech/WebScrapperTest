@@ -18,6 +18,8 @@ namespace TalentX.WebScrapper.API.Interface
         Task<List<DetailedScrapOutputData>> FindAsync();
 
         Task AddLayOffDataAsync(LayOffScrapInfo outputData);
+
+        Task AddRangeLayOffDataAsync(List<LayOffScrapInfo> outputDatas);
         Task DeleteLayOffDataAsync();
 
         Task<List<LayOffScrapInfo>> FindLayOffDataAsync();

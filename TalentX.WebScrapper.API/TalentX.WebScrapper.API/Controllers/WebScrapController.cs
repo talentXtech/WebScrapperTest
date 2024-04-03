@@ -33,7 +33,7 @@ namespace TalentX.WebScrapper.API.Controllers
         {
             try
             {
-                var driver = ChromeDriverUtils.CreateChromeDriver("https://www.allabolag.se/");
+                var driver = ChromeDriverUtils.CreateChromeDriverHeadless("https://www.allabolag.se/");
 
                 // Deal with compliance overlay
                 Thread.Sleep(5000);
@@ -121,7 +121,7 @@ namespace TalentX.WebScrapper.API.Controllers
             {
                 try
                 {
-                    newDriver = ChromeDriverUtils.CreateChromeDriver(data.Url);
+                    newDriver = ChromeDriverUtils.CreateChromeDriverHeadless(data.Url);
                     var newComplianceOverlayElement = newDriver.FindElements(By.Id("qc-cmp2-ui"));
                     if (newComplianceOverlayElement.Count() > 0)
                     {

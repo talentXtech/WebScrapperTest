@@ -54,7 +54,7 @@ namespace TalentX.WebScrapper.API.Extensions
                 var text = element[0].Text;
                 return text;
             }
-            return "Details Not Available";
+            return "";
         }
 
         public static string FindByClass(this ChromeDriver driver, string className)
@@ -65,7 +65,7 @@ namespace TalentX.WebScrapper.API.Extensions
                 var text = element[0].Text;
                 return text;
             }
-            return "Details Not Available";
+            return "";
         }
 
         public static IWebElement FindElementByClass(this ChromeDriver driver, string className)
@@ -82,7 +82,7 @@ namespace TalentX.WebScrapper.API.Extensions
                 var text = element[0].Text;
                 return text;
             }
-            return "Details Not Available";
+            return "";
 
         }
 
@@ -94,7 +94,7 @@ namespace TalentX.WebScrapper.API.Extensions
                 var text = element[0].Text;
                 return text;
             }
-            return "Details Not Available";
+            return "";
         }
 
         public static string FindByTag(this IWebElement parentElement, string tag)
@@ -105,7 +105,7 @@ namespace TalentX.WebScrapper.API.Extensions
                 var text = element[0].Text;
                 return text;
             }
-            return "Details Not Available";
+            return "";
         }
 
         public static string FindBySelectorWithChildDivElement(this IWebElement parentElement, string selector)
@@ -117,7 +117,7 @@ namespace TalentX.WebScrapper.API.Extensions
                 var text = element[0].Text;
                 return text;
             }
-            return "Details Not Available";
+            return "";
         }
         public static string FindBySelector(this IWebElement parentElement, string selector)
         {
