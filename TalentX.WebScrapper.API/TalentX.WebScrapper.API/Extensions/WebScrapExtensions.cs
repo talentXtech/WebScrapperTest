@@ -31,18 +31,20 @@ namespace TalentX.WebScrapper.API.Extensions
             }
         }
 
-        public static void ClickButton(this IWebElement complianceOverlayElement, string str, string elementType)
+        public static void ClickButtonById(this IWebElement parentElement, string str)
         {
-            if (elementType == "class")
-            { complianceOverlayElement?.FindElement(By.ClassName(str)).Click(); }
-           else if (elementType == "id")
-            {complianceOverlayElement?.FindElement(By.Id(str)).Click(); }
-            else
-            { Console.Write("Provide valid element type"); }           
+            parentElement?.FindElement(By.Id(str)).Click();
 
         }
+        public static void ClickButtonByClass(this ChromeDriver driver, string str)
+        {
+            driver.FindElement(By.ClassName(str)).Click();
+        }
 
-
+        public static void ClickButtonByClass(this IWebElement buttonElement, string str)
+        {
+            buttonElement?.FindElement(By.ClassName(str)).Click();
+        }
 
 
 
@@ -153,6 +155,33 @@ namespace TalentX.WebScrapper.API.Extensions
         {
             var elements = parentElement.FindElements(By.ClassName(className));
             return elements;
+        }
+
+        public static void UserLogin(this ChromeDriver driver , string email , string password)
+        {
+            var loginEmailInput = driver.FindElement(By.Id("email"));
+            loginEmailInput.Clear();
+            loginEmailInput.SendKeys(email);
+
+            var continueButton = driver.FindElement(By.XPath("/html/body/div[2]/div/main/div/div/div[2]/div/form/div/div[2]/div/button"));
+            continueButton.Click();
+
+            Thread.Sleep(5000);
+            var passwordInput = driver.FindElement(By.Id("password"));
+            passwordInput.Clear();
+            passwordInput.SendKeys(password );
+
+            var continueButton2 = driver.FindElement(By.XPath("/html/body/div[2]/div/main/div/div/div[2]/div/form/div/div[4]/div/button"));
+            continueButton2.Click();
+        }
+
+        public static void CloseComplainceOverlayForSifted(this ChromeDriver driver)
+        {
+            var complianceOverlay = driver.FindElements(By.Id("CybotCookiebotDialogBodyButtonsWrapper"));
+            if (complianceOverlay.Count > 0)
+            {
+                complianceOverlay[0].ClickButtonById("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll");
+            }
         }
     }
 }

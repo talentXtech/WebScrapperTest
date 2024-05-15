@@ -23,5 +23,14 @@ namespace TalentX.WebScrapper.API.Interface
         Task DeleteLayOffDataAsync();
 
         Task<List<LayOffScrapInfo>> FindLayOffDataAsync();
+
+        Task AddSiftedDataAsync(SiftedFinalScrapInfo outputData);
+        Task AddRangeSiftedDataAsync(List<SiftedFinalScrapInfo> outputDatas);
+        Task DeleteSiftedDataAsync();
+        Task<List<SiftedFinalScrapInfo>> FindSiftedDataAsync();
+
+         Task AddRangeSiftedInitialDataAsync(List<SiftedInitialScrapInfo> outputDatas);
+        Task DeleteSiftedInitialDataAsync();
+        List<string> ListOfurlsNotExistingInDb(List<string> outputDatas);
     }
 }

@@ -38,7 +38,7 @@ namespace TalentX.WebScrapper.API.Controllers
                 // Deal with compliance overlay
                 Thread.Sleep(5000);
                 var complianceOverlayElement = driver.FindElements(By.Id("qc-cmp2-ui"));
-                if (complianceOverlayElement.Count() > 0) { complianceOverlayElement[0].ClickButton("css-iq8lad", "class"); }
+                if (complianceOverlayElement.Count() > 0) { complianceOverlayElement[0].ClickButtonByClass("css-iq8lad"); }
 
 
                 // enter industry
@@ -87,7 +87,7 @@ namespace TalentX.WebScrapper.API.Controllers
                 Console.WriteLine(ex.Message);
 
             }
-           
+
             var data = await _scrapDataRepo.FindAsync();
 
             using (var memoryStream = new MemoryStream())
@@ -103,17 +103,11 @@ namespace TalentX.WebScrapper.API.Controllers
 
         }
 
-        [HttpDelete("Delete")]
-        public async Task<ActionResult> DeleteDatabase()
-        {
-            await _scrapDataRepo.DeleteAsync();
-            await _scrapDataRepo.DeleteDetailedDataAsync();
-            return Ok();
-        }
 
 
 
-            private async Task ScrapingDetailedDataFromEachLink(List<InitialScrapOutputData> finalScrappedDatas)
+
+        private async Task ScrapingDetailedDataFromEachLink(List<InitialScrapOutputData> finalScrappedDatas)
         {
             ChromeDriver newDriver = null;
             await _scrapDataRepo.DeleteDetailedDataAsync();
@@ -125,7 +119,7 @@ namespace TalentX.WebScrapper.API.Controllers
                     var newComplianceOverlayElement = newDriver.FindElements(By.Id("qc-cmp2-ui"));
                     if (newComplianceOverlayElement.Count() > 0)
                     {
-                        newComplianceOverlayElement[0].ClickButton("css-iq8lad", "class");
+                        newComplianceOverlayElement[0].ClickButtonByClass("css-iq8lad");
                     }
 
 
@@ -182,7 +176,6 @@ namespace TalentX.WebScrapper.API.Controllers
                         YearOfEstablishment = "Issue with getting data",
                         Revenue = "Issue with getting data",
                         EmployeeNames = "Issue with getting data"
-
                     };
                     await _scrapDataRepo.AddDetailedDataAsync(companyDetail);
                 }

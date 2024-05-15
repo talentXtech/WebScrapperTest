@@ -16,7 +16,7 @@ namespace TalentX.WebScrapper.API.Utilities
 
             driver.Navigate().GoToUrl(url);
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
-
+            driver.Manage().Window.Maximize();
 
             return driver;
         }
@@ -33,6 +33,7 @@ namespace TalentX.WebScrapper.API.Utilities
 
             driver.Navigate().GoToUrl(url);
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+            driver.Manage().Window.Maximize();
 
 
             return driver;

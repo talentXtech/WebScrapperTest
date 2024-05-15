@@ -65,6 +65,33 @@ namespace TalentX.WebScrapper.API.Data
             context.LayOffScrapInfo.Add(testData2);
             context.SaveChanges();
 
+            if (context.SiftedFinalScrapInfo.Any()) return;
+
+            var testData3 = new SiftedFinalScrapInfo
+            {
+                Sector = "test",
+                Sectorurl = "test",
+                ContentType = "test",
+                Date = "test",
+                Subject = "test",
+                Summary = "test",
+                articleUrl = "test",
+                Tags = "test"
+            };
+
+            context.SiftedFinalScrapInfo.Add(testData3);
+            context.SaveChanges();
+
+            if (context.SiftedInitialScrapInfo.Any()) return;
+
+            var testData4 = new SiftedInitialScrapInfo
+            {
+                Sectors = "test",
+                SectorUrl = "test"
+            };
+
+            context.SiftedInitialScrapInfo.Add(testData4);
+            context.SaveChanges();
         }
     }
 }

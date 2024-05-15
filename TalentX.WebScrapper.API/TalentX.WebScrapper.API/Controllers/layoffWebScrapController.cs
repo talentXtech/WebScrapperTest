@@ -45,7 +45,7 @@ namespace TalentX.WebScrapper.API.Controllers
             try
             {
                 var complianceOverlayElement = driver.FindElements(By.Id("onetrust-button-group"));
-                if (complianceOverlayElement.Count() > 0) { complianceOverlayElement[0].ClickButton("onetrust-accept-btn-handler", "id"); }
+                if (complianceOverlayElement.Count() > 0) { complianceOverlayElement[0].ClickButtonById("onetrust-accept-btn-handler"); }
             }
             catch (Exception)
             {
